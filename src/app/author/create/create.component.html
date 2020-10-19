@@ -1,0 +1,58 @@
+
+<div>
+    <div>
+        <div></div>
+        <div>
+            <div>
+                <div>FirstName</div>
+                <div>
+                    <input
+                    type="text"
+                    class="form-control"
+                    id="FirstName"
+                    required
+                    [(ngModel)]="entity.FirstName"
+                    name="FirstName"
+                  />
+                </div>
+            </div>
+            
+            <div>
+                <div>LastName</div>
+                <div>
+                    <input
+                    type="text"
+                    class="form-control"
+                    id="LastName"
+                    required
+                    [(ngModel)]="entity.LastName"
+                    name="LastName"
+                  />
+                </div>
+            </div>
+            
+            <div>
+                <div>Email</div>
+                <div>
+                    <input
+                    type="text"
+                    class="form-control"
+                    id="Email"
+                    required
+                    [(ngModel)]="entity.Email"
+                    name="Email"
+                  />
+                </div>
+            </div>
+            
+            <div>
+                <div>Books</div>
+                <div></div>
+            </div>
+            
+            <div>
+                <button (click)="save()" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

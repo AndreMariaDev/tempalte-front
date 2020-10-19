@@ -1,5 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms'
 
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule} from '@angular/material/button';
@@ -15,23 +16,21 @@ import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AuthorModule } from './author/author.module';
-import { BookModule } from './book/book.module';
+import { AuthorComponent } from './author/author.component';
+import { AuthorService } from './author/author.service';
+import { CreateComponent } from './create/create.component';
+import { UpdateComponent } from './update/update.component';
+import { ListComponent } from './list/list.component'
+import { AuthorRoutingModule } from './author-routing.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AuthorComponent, CreateComponent, UpdateComponent, ListComponent],
+  providers:[AuthorService],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
+    AuthorRoutingModule,
+    BrowserAnimationsModule,
     FormsModule,
     MatButtonModule,
     MatMenuModule,
@@ -43,15 +42,10 @@ import { BookModule } from './book/book.module';
     MatGridListModule,
     MatExpansionModule,
     MatTableModule,
-    AppRoutingModule,
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
-    MDBBootstrapModule.forRoot(),
-    AuthorModule,
-    BookModule
+    CommonModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AuthorModule { }

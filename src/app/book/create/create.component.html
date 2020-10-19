@@ -1,0 +1,67 @@
+<div>
+    <div>
+        <div></div>
+        <div>
+            <div>
+                <div>Name</div>
+                <div>
+                    <input
+                    type="text"
+                    class="form-control"
+                    id="FirstName"
+                    required
+                    [(ngModel)]="entity.Name"
+                    name="Name"
+                  />
+                </div>
+            </div>
+            
+            <div>
+                <div>ISBN</div>
+                <div>
+                    <input
+                    type="text"
+                    class="form-control"
+                    id="ISBN"
+                    required
+                    [(ngModel)]="entity.ISBN"
+                    name="ISBN"
+                  />
+                </div>
+            </div>
+            
+            <div>
+                <div>Publisher</div>
+                <div>
+                    <input
+                    type="text"
+                    class="form-control"
+                    id="Publisher"
+                    required
+                    [(ngModel)]="entity.Publisher"
+                    name="Publisher"
+                  />
+                </div>
+            </div>
+            <div>
+                <div>Author</div>
+                <div>
+
+                    <mat-select placeholder="Select Author" [(ngModel)]="entity.AuthorId" >
+                        <mat-option *ngFor="let author of authors" [value]="author.Id" >{{ author.FirstName }}</mat-option>
+                    </mat-select>
+
+                </div>
+            </div>
+            
+            <div>
+                <div>Books</div>
+                <div></div>
+            </div>
+            
+            <div>
+                <button (click)="save()" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

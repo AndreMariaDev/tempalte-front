@@ -1,5 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms'
 
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule} from '@angular/material/button';
@@ -14,24 +15,24 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
-import { AuthorModule } from './author/author.module';
-import { BookModule } from './book/book.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { BookComponent } from './book/book.component';
+import { BookService } from './book/book.service';
+import { CreateComponent } from './create/create.component';
+import { UpdateComponent } from './update/update.component';
+import { ListComponent } from './list/list.component';
+import { BookRoutingModule } from './book-routing.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [BookComponent, CreateComponent, UpdateComponent, ListComponent],
+  providers:[BookService],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
+    CommonModule,
+    BrowserAnimationsModule,
     FormsModule,
     MatButtonModule,
     MatMenuModule,
@@ -43,15 +44,11 @@ import { BookModule } from './book/book.module';
     MatGridListModule,
     MatExpansionModule,
     MatTableModule,
-    AppRoutingModule,
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
-    MDBBootstrapModule.forRoot(),
-    AuthorModule,
-    BookModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    MatSelectModule,
+    BookRoutingModule
+  ]
 })
-export class AppModule { }
+export class BookModule { }
