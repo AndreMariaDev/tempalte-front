@@ -22,20 +22,7 @@ export interface PeriodicElement {
 export class ListComponent extends ListBaseComponent<Author> implements OnInit  {
 
   constructor(appService: AuthorService) {
-
     super(appService, ['select', 'FirstName', 'LastName', 'IsActive', 'AddBook']);
-    let par = [];
-    
-    par.push({ key:'_offset',values:'1'});
-    par.push({ key:'_limit',values:'10'});
-
-    appService.GetByFilter(new QueryOptions(par)).subscribe(
-      response => {
-        this.dataSource = new MatTableDataSource<Author>(response);
-      },
-      error => {
-        console.log(error);
-      }); 
   }
 
   ngOnInit(): void {

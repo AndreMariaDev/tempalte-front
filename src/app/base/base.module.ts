@@ -2,12 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {  } from './base.component';
 import {} from  './base.service';
-import { ListComponent } from './list/list.component';
-import { CreateComponent } from './create/create.component';
 import { UpdateComponent } from './update/update.component';
 
 @NgModule({
-  declarations: [ListComponent, CreateComponent, UpdateComponent],
+  declarations: [UpdateComponent],
   imports: [
     CommonModule
   ]

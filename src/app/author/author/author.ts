@@ -1,3 +1,5 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { Base } from 'src/app/base/base';
 import { Serializer } from 'src/app/base/serializer';
 import { Book } from 'src/app/book/book/book';
@@ -16,7 +18,7 @@ export class AuthorSerializer implements Serializer{
         if(json.books){
             json.books.map((result)=> book.push({
                 Id : result.id,
-                IsActive:result.isActive,  
+                IsActive:result.isActive,
                 CreateDate:result.createDate,
                 DateUpdate: result.dateUpdate,
                 UserCode :result.userCode,
@@ -24,14 +26,14 @@ export class AuthorSerializer implements Serializer{
                 Name: result.name,
                 ISBN: result.isbn,
                 Publisher: result.publisher,
-                Author: result.Author 
+                Author: result.Author
             })
             );
         }
 
         let author : Author = {
             Id : json.id,
-            IsActive:json.isActive,  
+            IsActive:json.isActive,
             CreateDate:json.createDate,
             DateUpdate: json.dateUpdate,
             UserCode :json.userCode,
@@ -43,11 +45,11 @@ export class AuthorSerializer implements Serializer{
 
         return author;
       }
-    
+
       toJson(author: Author): any {
         return {
             Id : author.Id,
-            IsActive:author.IsActive,  
+            IsActive:author.IsActive,
             CreateDate:author.CreateDate,
             DateUpdate: author.DateUpdate,
             UserCode :author.UserCode,
@@ -56,4 +58,20 @@ export class AuthorSerializer implements Serializer{
             Email: author.Email
         };
       }
+}
+
+export class AuthorViewModel {
+
+  registerForm: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) { }
+
+  public getFormGroup(){
+    return this.registerForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      Email: ['', Validators.required]
+    });
+  }
+
 }

@@ -23,10 +23,12 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { AuthorModule } from './author/author.module';
 import { BookModule } from './book/book.module';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

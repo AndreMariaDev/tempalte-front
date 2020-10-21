@@ -1,58 +1,73 @@
 
-<div>
-    <div>
-        <div></div>
-        <div>
-            <div>
-                <div>FirstName</div>
-                <div>
-                    <input
-                    type="text"
-                    class="form-control"
-                    id="FirstName"
-                    required
-                    [(ngModel)]="entity.FirstName"
-                    name="FirstName"
-                  />
-                </div>
-            </div>
-            
-            <div>
-                <div>LastName</div>
-                <div>
-                    <input
-                    type="text"
-                    class="form-control"
-                    id="LastName"
-                    required
-                    [(ngModel)]="entity.LastName"
-                    name="LastName"
-                  />
-                </div>
-            </div>
-            
-            <div>
-                <div>Email</div>
-                <div>
-                    <input
-                    type="text"
-                    class="form-control"
-                    id="Email"
-                    required
-                    [(ngModel)]="entity.Email"
-                    name="Email"
-                  />
-                </div>
-            </div>
-            
-            <div>
-                <div>Books</div>
-                <div></div>
-            </div>
-            
-            <div>
-                <button (click)="save()" class="btn btn-success">Submit</button>
-            </div>
-        </div>
-    </div>
-</div>
+<form [formGroup]="registerForm" (ngSubmit)="onSave()">
+  <div class="form-row">
+      <div>
+          <div></div>
+          <div>
+              <div>
+                  <label>First Name</label>
+                  <div>
+                      <input
+                      type="text"
+                      class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && registerForm.controls.firstName.errors }"
+                      id="FirstName"
+                      required
+                      formControlName = "firstName"
+                      name="FirstName"
+                    />
+                    <div *ngIf="submitted && registerForm.controls.firstName.errors" class="invalid-feedback">
+                      <div *ngIf="registerForm.controls.firstName.errors.required">First Name is required</div>
+                    </div>
+                  </div>
+              </div>
+
+              <div>
+                  <div>LastName</div>
+                  <div>
+                      <input
+                      type="text"
+                      class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && registerForm.controls.lastName.errors }"
+                      id="LastName"
+                      required
+                      formControlName = "lastName"
+                      name="LastName"
+                    />
+                    <div *ngIf="submitted && registerForm.controls.lastName.errors" class="invalid-feedback">
+                      <div *ngIf="registerForm.controls.errors.required">First Name is required</div>
+                    </div>
+                  </div>
+              </div>
+
+              <div>
+                  <div>Email</div>
+                  <div>
+                      <input
+                      type="text"
+                      class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && registerForm.controls.Email.errors }"
+                      id="Email"
+                      required
+                      formControlName = "Email"
+                      name="Email"
+                    />
+                    <div *ngIf="submitted && registerForm.controls.Email.errors" class="invalid-feedback">
+                      <div *ngIf="registerForm.controls.Email.errors.required">First Name is required</div>
+                    </div>
+                  </div>
+              </div>
+
+              <div>
+                  <div>Books</div>
+                  <div></div>
+              </div>
+
+              <div class="text-center">
+                <button class="btn btn-primary mr-1">Register</button>
+                <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</form>

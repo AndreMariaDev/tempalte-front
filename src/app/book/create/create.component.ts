@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
 
 import { Book } from '../book/book';
 import { BookService } from '../book/book.service';
@@ -20,18 +21,18 @@ export class CreateComponent extends CreateBaseComponent<Book>{
   book: Book;
   submitted = false;
 
-  constructor(appService: BookService, private appAuthorService: AuthorService) {
-    super(appService,Book);
+  constructor(appService: BookService, private appAuthorService: AuthorService,dialog: MatDialog) {
+    super(appService,Book,dialog);
     this.authors = new Array<Author>();
     let par = [];
-    
+
     par.push({ key:'_offset',values:'1'});
     par.push({ key:'_limit',values:'10'});
 
     this.appAuthorService.GetByFilter(new QueryOptions(par)).subscribe(
       response => {
         console.log('GetByFilter');
-        
+
         response.map(resp => {
           this.authors.push(resp);
           console.log(this.authors);
@@ -40,7 +41,8 @@ export class CreateComponent extends CreateBaseComponent<Book>{
       },
       error => {
         console.log(error);
-      }); 
+      });
   }
 
+  //ToDo: tetetttetettte
 }

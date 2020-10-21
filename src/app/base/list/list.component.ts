@@ -1,7 +1,5 @@
-import { Component,OnInit } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-
 
 import { QueryOptions } from 'src/app/base/serializer';
 import { Base } from '../base';
@@ -16,7 +14,7 @@ export class ListBaseComponent<T extends Base> {
   constructor(private appService: BaseService<T> ,displayedColumns: string[]) {
     this.displayedColumns = displayedColumns;
     let par = [];
-    
+
     par.push({ key:'_offset',values:'1'});
     par.push({ key:'_limit',values:'10'});
 
@@ -26,7 +24,7 @@ export class ListBaseComponent<T extends Base> {
       },
       error => {
         console.log(error);
-      }); 
+      });
   }
 
   isAllSelected() {
